@@ -1,6 +1,9 @@
 ## Result
 https://casa-do-codigo-by-romulo.herokuapp.com/login
 
+email: 'admin@email.com',
+senha: '123'
+
 ## Installation
 use node 10.x
 
