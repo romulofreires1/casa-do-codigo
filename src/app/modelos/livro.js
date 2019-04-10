@@ -1,5 +1,3 @@
-// src/app/modelos/livro.js
-
 const { check } = require('express-validator/check');
 
 class Livro {

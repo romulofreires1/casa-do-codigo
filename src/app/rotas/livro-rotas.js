@@ -1,5 +1,3 @@
-// src/app/rotas/livro-rotas.js
-
 const LivroControlador = require('../controladores/livro-controlador');
 const livroControlador = new LivroControlador();
 

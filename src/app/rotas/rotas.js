@@ -1,5 +1,3 @@
-// src/app/rotas/rotas.js
-
 const livroRotas = require('./livro-rotas');
 const baseRotas = require('./base-rotas');
 

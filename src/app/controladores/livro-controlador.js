@@ -5,7 +5,7 @@ const db = require('../../config/database');
 
 const templates = require('../views/templates');
 
-class LivroControlador{
+class LivroControlador {
 
     static rotas() {
         return {
@@ -16,8 +16,9 @@ class LivroControlador{
         };
     }
 
-    lista(){
+    lista() {
         return function(req, resp) {
+
             const livroDao = new LivroDao(db);
             livroDao.lista()
                     .then(livros => resp.marko(
@@ -27,15 +28,12 @@ class LivroControlador{
                         }
                     ))
                     .catch(erro => console.log(erro));
-        }
+        };
     }
 
     formularioCadastro() {
         return function(req, resp) {
-            resp.marko(
-                templates.livros.form, 
-                { livro: {} }
-            );
+            resp.marko(templates.livros.form, { livro: {} });
         };
     }
 
@@ -43,7 +41,7 @@ class LivroControlador{
         return function(req, resp) {
             const id = req.params.id;
             const livroDao = new LivroDao(db);
-
+    
             livroDao.buscaPorId(id)
                     .then(livro => 
                         resp.marko(
@@ -59,9 +57,9 @@ class LivroControlador{
         return function(req, resp) {
             console.log(req.body);
             const livroDao = new LivroDao(db);
-
+            
             const erros = validationResult(req);
-
+    
             if (!erros.isEmpty()) {
                 return resp.marko(
                     templates.livros.form,
@@ -71,7 +69,7 @@ class LivroControlador{
                     }
                 );
             }
-
+    
             livroDao.adiciona(req.body)
                     .then(resp.redirect(LivroControlador.rotas().lista))
                     .catch(erro => console.log(erro));
@@ -82,7 +80,7 @@ class LivroControlador{
         return function(req, resp) {
             console.log(req.body);
             const livroDao = new LivroDao(db);
-
+            
             livroDao.atualiza(req.body)
                     .then(resp.redirect(LivroControlador.rotas().lista))
                     .catch(erro => console.log(erro));
@@ -92,7 +90,7 @@ class LivroControlador{
     remove() {
         return function(req, resp) {
             const id = req.params.id;
-
+    
             const livroDao = new LivroDao(db);
             livroDao.remove(id)
                     .then(() => resp.status(200).end())
