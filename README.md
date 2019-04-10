@@ -1,3 +1,6 @@
+## About
+Project developed in the Alura course given by Professor Gabriel Leite
+
 ## Result
 https://casa-do-codigo-by-romulo.herokuapp.com/login
 
